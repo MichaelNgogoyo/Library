@@ -21,6 +21,11 @@ Route::group(['middleware' => ['role:librarian', 'auth']], function () {
     Route::get('/dashboard', function () {
       return view('dashboard');
     })->name('dashboard');
+
+    Route::get('libraries', [\App\Http\Controllers\LibraryController::class, 'index'])->name('libraries');
+    Route::get('books', [\App\Http\Controllers\LibraryController::class, 'index'])->name('manage.books');
+    Route::get('borrowings', [\App\Http\Controllers\LibraryController::class, 'index'])->name('borrowings');
+
 });
 
 Route::group(['middleware' => ['role:student', 'auth']], function () {
