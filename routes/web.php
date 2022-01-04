@@ -22,7 +22,12 @@ Route::group(['middleware' => ['role:librarian', 'auth']], function () {
       return view('dashboard');
     })->name('dashboard');
 
+    //libraries
     Route::get('libraries', [\App\Http\Controllers\LibraryController::class, 'index'])->name('libraries');
+    Route::post('libraries', [\App\Http\Controllers\LibraryController::class, 'store'])->name('store.library');
+    Route::delete('delete/library/{library}', [\App\Http\Controllers\LibraryController::class, 'destroy'])->name('delete.library');
+
+
     Route::get('books', [\App\Http\Controllers\LibraryController::class, 'index'])->name('manage.books');
     Route::get('borrowings', [\App\Http\Controllers\LibraryController::class, 'index'])->name('borrowings');
 
