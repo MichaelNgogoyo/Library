@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Labrary | Library Management System/</title>
+    <title>Library | Library Management System/</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -83,7 +83,7 @@
 
         <!--Footer-->
         <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
-          <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; Labrary 2022</a>
+          <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; Library 2022</a>
           <a class="text-gray-500 no-underline hover:no-underline" href="#">Ngogoyo Inc.</a>
         </div>
       </div>
