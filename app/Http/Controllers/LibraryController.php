@@ -48,10 +48,10 @@ class LibraryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Library  $appModelsLibrary
+     * @param  \App\Models\Library  $library
      * @return \Illuminate\Http\Response
      */
-    public function show(Library $appModelsLibrary)
+    public function show(Library $library)
     {
         //
     }
@@ -59,10 +59,10 @@ class LibraryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Library  $appModelsLibrary
+     * @param  \App\Models\Library  $library
      * @return \Illuminate\Http\Response
      */
-    public function edit(Library $appModelsLibrary)
+    public function edit(Library $library)
     {
         //
     }
@@ -71,12 +71,15 @@ class LibraryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Library  $appModelsLibrary
+     * @param  \App\Models\Library  $library
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Library $appModelsLibrary)
+    public function update(Request $request, Library $library)
     {
-        //
+        $library->name = $request->name;
+        $library->save();
+
+        return back();
     }
 
     /**
