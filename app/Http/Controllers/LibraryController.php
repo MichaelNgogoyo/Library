@@ -42,7 +42,7 @@ class LibraryController extends Controller
         $lib->name = $request->name;
         $lib->save();
 
-        return redirect('libraries')->with('success', 'Data added successfully');
+        return redirect('libraries')->with('success', 'Library added successfully');
     }
 
     /**
@@ -79,7 +79,7 @@ class LibraryController extends Controller
         $library->name = $request->name;
         $library->save();
 
-        return redirect('libraries')->with('edit-alert', 'Data updated successfully');
+        return redirect('libraries')->with('edit-alert', 'Library updated successfully');
     }
 
     /**
