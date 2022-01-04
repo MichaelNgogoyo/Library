@@ -42,7 +42,7 @@ class LibraryController extends Controller
         $lib->name = $request->name;
         $lib->save();
 
-        return back();
+        return redirect('libraries')->with('success', 'Data added successfully');
     }
 
     /**
@@ -79,7 +79,7 @@ class LibraryController extends Controller
         $library->name = $request->name;
         $library->save();
 
-        return back();
+        return redirect('libraries')->with('edit-alert', 'Data updated successfully');
     }
 
     /**
@@ -91,6 +91,6 @@ class LibraryController extends Controller
     public function destroy(Library $library)
     {
         $library->delete();
-        return back();
+        return redirect('libraries')->with('message', 'Library deleted successfully');
     }
 }
