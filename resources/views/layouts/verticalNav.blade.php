@@ -8,11 +8,11 @@
     <div class="flex-1 flex flex-col overflow-y-auto">
       <nav class="flex-1 px-2 py-4 bg-gray-800 space-y-1">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="{{auth()->user()->hasRole('librarian')? '/dashbhoard':'/student/dashboard'}}" class="bg-gray-900 text-white group flex
+        <a href="{{auth()->user()->hasRole('librarian')? route('dashboard'):'/student/dashboard'}}" class="text-white group flex
         items-center px-2
         py-2 text-sm
         font-medium
-        rounded-md">
+        rounded-md" :class="{'bg-gray-900':{{request()->routeIs('dashboard')}}}">
           <!--
             Heroicon name: outline/home
 
@@ -24,13 +24,13 @@
           Dashboard
         </a>
         @php
-            $menus = auth()->user()->hasRole('librarian') ? $menus->admin : $menus->student
+            $menus = auth()->user()->hasRole('librarian') ? $menus->admin : $menus->student;
         @endphp
        @foreach($menus as $menu)
             <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2
             text-sm
             font-medium
-            rounded-md">
+            rounded-md" :class="{'bg-gray-900':{{request()->routeIs($menu->route)}}}">
               <!-- Heroicon name: outline/users -->
               <i class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 text-2xl {{$menu->icon}}"></i>
                 {{$menu->name}}
