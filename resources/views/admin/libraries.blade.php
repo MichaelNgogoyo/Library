@@ -1,31 +1,5 @@
 <x-app-layout>
-    @if(session('message'))
-        <div
-            class="px-4 py-4 leading-normal text-red-600 bg-red-100 rounded-lg"
-            role="alert">
-            <p class="font-bold">
-                {{ session('message') }}
-            </p>
-        </div>
-    @endif
-        @if(session('success'))
-            <div
-                class="px-4 py-4 leading-normal text-green-400 bg-indigo-100 rounded-lg"
-                role="alert">
-                <p class="font-bold">
-                    {{ session('success') }}
-                </p>
-            </div>
-        @endif
-        @if(session('edit-alert'))
-            <div
-                class="px-4 py-4 leading-normal text-green-600 bg-indigo-50 rounded-lg"
-                role="alert">
-                <p class="font-bold">
-                    {{ session('edit-alert') }}
-                </p>
-            </div>
-        @endif
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Manage Libraries') }}

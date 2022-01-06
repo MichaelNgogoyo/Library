@@ -13,12 +13,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
+         @livewireStyles
+         @livewireScripts
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div x-data="{open: false}"  class="h-screen flex overflow-hidden bg-gray-100">
+        <div x-data="{open: false}"  x-init="setTimeout(() => open = false, 3000)" class="h-screen flex overflow-hidden bg-gray-100">
             @include('layouts.mobilenav')
           </div>
 
@@ -71,6 +75,60 @@
             </div>
 
             <main class="flex-1 relative overflow-y-auto focus:outline-none">
+                 @if(session('message'))
+                    <div
+                        class="px-4 py-4 leading-normal text-red-600 bg-red-100 rounded-lg"
+                        role="alert">
+                        <p class="font-bold">
+                            {{ session('message') }}
+                        </p>
+                    </div>
+                @endif
+                    @if(session('success'))
+                        <div class="rounded-md bg-green-50 p-4 m-0 m-auto w-[50%] mt-2 shadow-lg"
+                             x-transition:enter="transition ease-out duration-300"
+                              x-transition:enter-start="opacity-0"
+                              x-transition:enter-end="opacity-100"
+                              x-transition:leave="transition ease-in duration-300"
+                              x-transition:leave-start="opacity-100"
+                              x-transition:leave-end="opacity-0"
+                        >
+                          <div class="flex">
+                            <div class="flex-shrink-0">
+                              <!-- Heroicon name: solid/check-circle -->
+                              <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                              </svg>
+                            </div>
+                            <div class="ml-3">
+                              <p class="text-sm font-medium text-green-800">
+                                  {{ session('success') }}
+                              </p>
+                            </div>
+{{--                            <div class="ml-auto pl-3">--}}
+{{--                              <div class="-mx-1.5 -my-1.5">--}}
+{{--                                <button type="button" class="inline-flex bg-green-50 rounded-md p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600">--}}
+{{--                                  <span class="sr-only">Dismiss</span>--}}
+{{--                                  <!-- Heroicon name: solid/x -->--}}
+{{--                                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">--}}
+{{--                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />--}}
+{{--                                  </svg>--}}
+{{--                                </button>--}}
+{{--                              </div>--}}
+{{--                            </div>--}}
+                          </div>
+                        </div>
+
+                    @endif
+                    @if(session('edit-alert'))
+                        <div
+                            class="px-4 py-4 leading-normal text-green-600 bg-indigo-50 rounded-lg"
+                            role="alert">
+                            <p class="font-bold">
+                                {{ session('edit-alert') }}
+                            </p>
+                        </div>
+                    @endif
               <div class="py-6">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                   <h1 class="text-2xl font-semibold text-gray-900"> {{ $header }}</h1>

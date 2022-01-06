@@ -12,7 +12,7 @@
         items-center px-2
         py-2 text-sm
         font-medium
-        rounded-md" :class="{'bg-gray-900':{{request()->routeIs('dashboard')}}}">
+        rounded-md" :class="{'bg-gray-900':{{request()->routeIs('dashboard')}} }">
           <!--
             Heroicon name: outline/home
 

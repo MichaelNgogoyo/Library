@@ -29,7 +29,12 @@ Route::group(['middleware' => ['role:librarian', 'auth']], function () {
     Route::put('update/library/{library}', [\App\Http\Controllers\LibraryController::class, 'update'])->name('update.library');
 
 
-    Route::get('books', [\App\Http\Controllers\LibraryController::class, 'index'])->name('manage.books');
+    Route::get('books', [\App\Http\Controllers\BookController::class, 'index'])->name('manage.books');
+    Route::post('books', [\App\Http\Controllers\BookController::class, 'store'])->name('store.book');
+    Route::delete('books', [\App\Http\Controllers\BookController::class, 'destroy'])->name('delete.book');
+    Route::put('books', [\App\Http\Controllers\BookController::class, 'update'])->name('update.book');
+
+
     Route::get('borrowings', [\App\Http\Controllers\LibraryController::class, 'index'])->name('borrowings');
 
 });
