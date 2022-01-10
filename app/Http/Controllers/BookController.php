@@ -17,7 +17,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('admin.books');
+        $books = Book::paginate(10);
+        return view('admin.books')->with('books', $books);
     }
 
     /**
@@ -113,9 +114,10 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-
+        $books = Book::find($id);
+        return view('admin.edit')->with('books', $books);
     }
 
     /**
