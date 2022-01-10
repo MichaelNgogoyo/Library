@@ -17,7 +17,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('admin.books');
+        $books = Book::paginate(10);
+        return view('admin.books')->with('books', $books);
     }
 
     /**
@@ -104,7 +105,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+
     }
 
     /**
@@ -115,7 +116,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $books = Book::find($book);
+        return view('admin.edit')->with('books', $books);
     }
 
     /**
