@@ -248,49 +248,6 @@
                         </div>
                     </div>
                 </div>
-
-            <div>
-
-
-                    <table class="table-auto">
-                        <thead class="">
-                        <tr>
-                            <th class="">Id</th>
-                            <th class="">Title</th>
-                            <th class="">Author ID</th>
-                            <th class="">Description</th>
-                            <th class="">Edit</th>
-                            <th class="">Delete</th>
-                        </tr>
-                        </thead>
-
-
-                        @forelse($books as $book)
-                        <tbody>
-                        <tr class="bg-blue-200">
-                            <td class="px-10">{{ $book -> id }}</td>
-                            <td class="px-10">{{ $book -> title }}</td>
-                            <td class="px-10">{{$book -> author_id}}</td>
-                            <td class="px-10">{{$book -> description}}</td>
-{{--                            <td class="px-10">--}}
-{{--                                <img src="{{asset('images/'.$book->image)}}" width="150px" height="150px" alt="Image">--}}
-{{--                            </td>--}}
-{{--                            <td class="px-10"><a href="/editbook/{{$book->id}}" class="btn btn-primary">Edit</a></td>--}}
-{{--                            <td class="px-10"><a href="/deletebook/{{$book->id}}" class="btn btn-danger">Delete</a></td>--}}
-                        </tr>
-                        </tbody>
-                        @empty
-                            <tr>
-                                <td colspan="4">
-                                    No record Found.
-                                </td>
-                            </tr>
-
-                        @endforelse
-
-
-                    </table>
-            </div>
         </main>
     </div>
 </x-app-layout>
