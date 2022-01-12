@@ -104,7 +104,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+
     }
 
     /**
@@ -115,7 +115,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+
     }
 
     /**
