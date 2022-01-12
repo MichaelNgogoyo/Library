@@ -38,7 +38,8 @@ Route::group(['middleware' => ['role:librarian', 'auth']], function () {
     Route::put('update/books/{book}', [\App\Http\Controllers\BookController::class, 'update'])->name('update.book');
 
 
-    Route::get('borrowings', [\App\Http\Controllers\LibraryController::class, 'index'])->name('borrowings');
+    Route::get('borrowings', [\App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowings');
+    Route::post('borrowings', [\App\Http\Controllers\BorrowingController::class, 'store'])->name('store.borrowings');
 
 });
 
