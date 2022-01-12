@@ -25,4 +25,22 @@ class Book extends Model
     {
         return $this->belongsTo(Publisher::class);
     }
+
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class);
+    }
+
+    public function scopeSearch($query, string $terms = null)
+    {
+        collect(explode(' ',$terms))->filter()->each(function($term) use ($query){
+            $term = '%'.$term.'%';
+             $query->where(function($query) use ($term){
+                 //add more conditions here
+                    $query->where('title', 'like', $term)
+                        ->orWhere('description','like',$term);
+             });
+        });
+
+    }
 }
