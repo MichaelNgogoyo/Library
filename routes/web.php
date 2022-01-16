@@ -33,8 +33,8 @@ Route::group(['middleware' => ['role:librarian', 'auth']], function () {
     Route::get('editbook/{{id}}', [\App\Http\Controllers\BookController::class, 'edit'])->name('manage.edit');
     Route::put('/updatebook/{id}', [BookController::class, 'update'])->name('updatebook');
     Route::post('books', [\App\Http\Controllers\BookController::class, 'store'])->name('store.book');
-    Route::delete('books', [\App\Http\Controllers\BookController::class, 'destroy'])->name('delete.book');
-    Route::put('books', [\App\Http\Controllers\BookController::class, 'update'])->name('update.book');
+    Route::delete('delete/books/{book}', [\App\Http\Controllers\BookController::class, 'destroy'])->name('delete.book');
+    Route::put('update/books/{book}', [\App\Http\Controllers\BookController::class, 'update'])->name('update.book');
 
 
     Route::get('borrowings', [\App\Http\Controllers\LibraryController::class, 'index'])->name('borrowings');
