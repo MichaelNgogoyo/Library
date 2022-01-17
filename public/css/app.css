@@ -1145,9 +1145,6 @@ select {
 .overflow-hidden {
   overflow: hidden;
 }
-.overflow-scroll {
-  overflow: scroll;
-}
 .overflow-x-auto {
   overflow-x: auto;
 }
@@ -1456,9 +1453,6 @@ select {
 }
 .pr-3 {
   padding-right: 0.75rem;
-}
-.pl-10 {
-  padding-left: 2.5rem;
 }
 .pt-1 {
   padding-top: 0.25rem;
