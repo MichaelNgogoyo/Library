@@ -18,11 +18,10 @@
               Lend Book
             </button>
         </h1>
-        <main class="flex-1 flex overflow-hidden  mt-6">
+        <main class="flex-1 flex mt-6">
             <livewire:borrowing-table />
-
              {{-- Update modal--}}
-                <div x-show="showCreate" class="fixed z-10 inset-0 overflow-y-auto"
+              <div x-show="showCreate" class="fixed z-10 inset-0 overflow-y-auto"
                      aria-labelledby="modal-title" role="dialog"
                      aria-modal="true">
                     <div

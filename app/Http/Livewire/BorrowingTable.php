@@ -27,7 +27,7 @@ class BorrowingTable extends DataTableComponent
             ->sortable()->searchable(),
             Column::make('Created', 'created_at')
             ->sortable()->searchable(),
-
+            Column::make('Actions')
 
         ];
     }
