@@ -40,7 +40,7 @@ class BookTable extends DataTableComponent
 
     public function query(): Builder
     {
-        return Book::query();
+        return Book::query()->latest();
     }
 
     public function rowView(): string

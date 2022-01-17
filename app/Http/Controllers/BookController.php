@@ -127,17 +127,23 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        try {
+            $book->fill($request->all())->save();
+            return back()->with('success', 'Record updated successfully');
+        }catch (\Throwable $e){
+            return back()->with('message', 'Unable to update record: '.$e->getMessage());
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Book $book)
     {
-        //
+        /*if book borrowed, no delete or has historical data*/
+        $book->delete();
+        return back()->with('message', 'Book deleted successfully!');
     }
 }

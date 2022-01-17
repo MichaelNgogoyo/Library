@@ -215,7 +215,7 @@
                                                                     <div class="relative flex items-stretch flex-grow focus-within:z-10">
                                                                       <input type="date" name="publish_date" id="email"
                                                                             class="focus:ring-indigo-500
-                                                                      focus:border-indigo-500 block w-full rounded-none rounded-md pl-10
+                                                                      focus:border-indigo-500 block w-full rounded-none rounded-md
                                                                       sm:text-sm border-gray-300" />
                                                                   </div>
                                                               </div>
