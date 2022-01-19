@@ -19,6 +19,7 @@
 <x-livewire-tables::table.cell>
     <span class="text-gray-700">{{$row->created_at}}</span>
 </x-livewire-tables::table.cell>
+
 <x-livewire-tables::table.cell>
     <div class="flex"  x-data="{showDelete:false, newAuthor:false, newPublisher:false, showEdit:false, deleteBook:null, editingBook:null}"
          class="bg-white
