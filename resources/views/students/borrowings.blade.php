@@ -1,92 +1,12 @@
 <x-app-layout>
+
     <x-slot name="header">
-        {{ __('Student Dashboard') }}
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Borrowed Books') }}
+        </h2>
     </x-slot>
 
-    <div class="py-6">
-        <div class="mx-auto">
-            <!-- This example requires Tailwind CSS v2.0+ -->
-            <div>
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Summary
-              </h3>
-              <dl class="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-3 md:divide-y-0 md:divide-x">
-                <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal text-gray-900">
-                    Total Books
-                  </dt>
-                  <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                    <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
-                        {{auth()->user()->borrowings->count()}}
-                      <span class="ml-2 text-sm font-medium text-gray-500">
-                        books borrowed
-                      </span>
-                    </div>
-
-                    <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
-                      <!-- Heroicon name: solid/arrow-sm-up -->
-                      <svg class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                      </svg>
-                      <span class="sr-only">
-                        Increased by
-                      </span>
-                      12%
-                    </div>
-                  </dd>
-                </div>
-
-                <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal text-gray-900">
-                    Approved Requests
-                  </dt>
-                  <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                    <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
-                      {{auth()->user()->borrowings->where('approved', 1)->count()}}
-                      <span class="ml-2 text-sm font-medium text-gray-500">
-                        approved requests
-                      </span>
-                    </div>
-
-                    <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
-
-                        <i class="fad fa-check text-green-500"></i>
-                      <span class="sr-only">
-                        value
-                      </span>
-                        {{ (auth()->user()->borrowings->where('approved', 1)->count()/auth()->user()->borrowings->count())*100 }}%
-                    </div>
-                  </dd>
-                </div>
-
-                <div class="px-4 py-5 sm:p-6">
-                  <dt class="text-base font-normal text-gray-900">
-                    Rejected Requests
-                  </dt>
-                  <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
-                    <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
-                      {{auth()->user()->borrowings->where('approved', 0)->count()}}
-                      <span class="ml-2 text-sm font-medium text-gray-500">
-                        rejected requests
-                      </span>
-                    </div>
-
-                    <div class="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 md:mt-2 lg:mt-0">
-                      <i class="fad fa-close pr-1 text-red-500"></i>
-                      <span class="sr-only">
-                        rejected percentage
-                      </span>
-                      {{ (auth()->user()->borrowings->where('approved', 0)->count()/auth()->user()->borrowings->count())*100 }}%
-                    </div>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-
-        </div>
-    </div>
-
-       <!-- This example requires Tailwind CSS v2.0+ -->
+      <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mt-12" x-data="{showCreate: false, newAuthor:false, newPublisher:false}">
         <h1 class="text-base text-2xl text-gray-700">Books Lent
            <button @click="showCreate = !showCreate" class="inline-flex w-[max-content]  ml-5 items-center px-2.5 py-1.5 border
