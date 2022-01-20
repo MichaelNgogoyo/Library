@@ -64,7 +64,8 @@
 
                 <div class="ml-4 flex items-center md:ml-6">
                     <div class="pr-4">
-                        <a href="/messenger">Chat</a>
+                        <a href="/messenger"><i class="fad fa-comments-alt text-2xl text-gray-500"></i></a>
+
                     </div>
                   <button class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span class="sr-only">View notifications</span>
