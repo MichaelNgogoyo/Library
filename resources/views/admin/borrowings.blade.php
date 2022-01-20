@@ -19,7 +19,7 @@
             </button>
         </h1>
         <main class="flex-1 flex mt-6">
-            <livewire:borrowing-table />
+            <livewire:report-table />
              {{-- Update modal--}}
               <div x-show="showCreate" class="fixed z-10 inset-0 overflow-y-auto"
                      aria-labelledby="modal-title" role="dialog"

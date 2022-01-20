@@ -7,7 +7,7 @@
     </x-slot>
 
       <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="mt-12" x-data="{showCreate: false, newAuthor:false, newPublisher:false}">
+    <div class="mt-12" x-data="{showCreate: false, newAuthor:false, newPublisher:false, newCategory: false}">
         <h1 class="text-base text-2xl text-gray-700">Master Book List
            <button @click="showCreate = !showCreate" class="inline-flex w-[max-content]  ml-5 items-center px-2.5 py-1.5 border
            border-transparent text-xs font-medium rounded text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2
@@ -115,7 +115,56 @@
                                                           <p class="mt-2 text-sm text-gray-500">General description of the book.</p>
                                                         </div>
 
-                                                        <div class="sm:col-span-4">
+                                                       <div class="sm:col-span-4">
+                                                          <label for="author" class="block text-sm font-medium text-gray-700">
+                                                           Category
+                                                          </label>
+                                                          <div class="mt-1">
+                                                              <div class="mt-1 flex rounded-md shadow-sm">
+                                                                <div class="relative flex items-stretch flex-grow focus-within:z-10">
+                                                                 @php
+                                                                    $categories = \App\Models\Category::all(['id','name']);
+                                                                  @endphp
+                                                                      @if($categories->count() > 0)
+                                                                        <select multiple x-show="!newCategory" id="category"
+                                                                                name="categories[]"
+                                                                                autocomplete="category"
+                                                                                class="shadow-sm focus:ring-indigo-500
+                                                                                focus:border-indigo-500 block w-full sm:text-sm
+                                                                                border-gray-300 rounded-l-md">
+                                                                          @foreach($categories as $category)
+                                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                           @endforeach
+                                                                        </select>
+                                                                          <input x-show="newCategory" type="text" name="category"
+                                                                                 id="author"
+                                                                             class="focus:ring-indigo-500
+                                                                      focus:border-indigo-500 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" placeholder="Computer science">
+                                                                      @else
+                                                                      <input type="text" name="category" id="author"
+                                                                             class="focus:ring-indigo-500
+                                                                      focus:border-indigo-500 block w-full rounded-none rounded-l-md
+                                                                      sm:text-sm border-gray-300" placeholder="Computer science">
+                                                                       @endif
+                                                                </div>
+                                                                <button x-bind:disabled="{{$categories->count() === 0}}" @click
+                                                                        .prevent="newCategory
+                                                                = !newAuthor" class="-ml-px
+                                                                relative inline-flex items-center space-x-2 px-4 py-2 border  text-sm font-medium rounded-r-md focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 "
+                                                                    x-bind:class="newCategory? 'border-emerald-300 text-emerald-700               bg-emerald-50 hover:bg-emerald-100 focus:ring-emerald-500                         focus:border-emerald-500':'border-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500'"
+                                                                >
+                                                                  <!-- Heroicon name: solid/sort-ascending -->
+                                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-6=400"
+                                                                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                                                    </svg>
+                                                                  <span>Add</span>
+                                                                </button>
+                                                              </div>
+                                                          </div>
+                                                        </div>
+
+                                                            <div class="sm:col-span-4">
                                                           <label for="author" class="block text-sm font-medium text-gray-700">
                                                             Author
                                                           </label>

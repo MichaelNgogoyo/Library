@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Library;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
@@ -39,13 +40,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
 //        dd($request->all());
-//          "_token" => "QVRy25HnuIEnORwhfBX88YeHrejVhRIkMvJxxLPi"
-//          "title" => "Tempora qui nostrum"
-//          "library-id" => "1"
-//          "description" => "Placeat recusandae"
-//          "author" => "Quo molestiae volupt"
-//          "publisher" => "Repudiandae ad dolor"
-//          "publish_date" => "2013-06-28"
+
 
         try {
               $library = '';
@@ -59,7 +54,17 @@ class BookController extends Controller
               }
 
 
-            $author = '';
+            $category = '';
+              if ($request->has('category') && $request->category){
+                $cat = Category::firstOrCreate([
+                     'name' => $request->category,
+                ]);
+                $category = $cat->id;
+              }else if($request->categories){
+                  $category = $request->categories;
+              }
+
+              $author = '';
               if ($request->has('author') && $request->author){
                 $guy = Author::firstOrCreate([
                      'name' => $request->author,
@@ -79,7 +84,7 @@ class BookController extends Controller
                   $publisher = $request->publisher_id;
               }
 
-            Book::create([
+            $b = Book::create([
                 'user_id'=>auth()->id(),
                 'library_id'=>$library,
                 'author_id'=>$author,
@@ -88,6 +93,9 @@ class BookController extends Controller
                 'description'=>$request->description,
                 'publish_date'=>$request->publish_date,
             ]);
+              //category
+            $b->categories()->attach($category);
+
               return back()->with('success', 'Book created successfully!');
         }catch (\Throwable $e){
             return back()->with('message', 'Error!: '.$e->getMessage());
