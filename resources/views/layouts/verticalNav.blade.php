@@ -3,7 +3,7 @@
        <a href="{{ route('dashboard') }}">
            <x-application-logo class="block h-10 w-auto fill-current text-white" />
         </a>
-        <h1 class="text-white ml-2 text-3xl font-bold">Labrary</h1>
+        <h1 class="text-white ml-2 text-3xl font-bold">Library</h1>
     </div>
     <div class="flex-1 flex flex-col overflow-y-auto">
       <nav class="flex-1 px-2 py-4 bg-gray-800 space-y-1">
