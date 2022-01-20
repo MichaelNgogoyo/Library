@@ -19,8 +19,10 @@ class CreateBorrowingsTable extends Migration
             $table->unsignedBigInteger('book_id');
             $table->timestamp('date_borrowed')->useCurrent();
             $table->timestamp('return_date')->useCurrent();
+            $table->boolean('approved')->default(0);
             $table->timestamp('actual_return_date')->nullable();
-            $table->timestamp('return_condition')->nullable();
+            $table->text('return_condition')->nullable();
+            $table->float('fine')->nullable();
             $table->timestamps();
 
         });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
@@ -31,22 +32,28 @@ Route::group(['middleware' => ['role:librarian', 'auth']], function () {
 
 
     Route::get('books', [\App\Http\Controllers\BookController::class, 'index'])->name('manage.books');
-    Route::get('editbook/{{id}}', [\App\Http\Controllers\BookController::class, 'edit'])->name('manage.edit');
-    Route::put('/updatebook/{id}', [BookController::class, 'update'])->name('updatebook');
+    Route::get('editbook/{id}', [\App\Http\Controllers\BookController::class, 'edit'])->name('manage.edit');
+    Route::put('/updatebook/{id}', [\App\Http\Controllers\BookController::class, 'update'])->name('updatebook');
     Route::post('books', [\App\Http\Controllers\BookController::class, 'store'])->name('store.book');
     Route::delete('delete/books/{book}', [\App\Http\Controllers\BookController::class, 'destroy'])->name('delete.book');
     Route::put('update/books/{book}', [\App\Http\Controllers\BookController::class, 'update'])->name('update.book');
-
 
     Route::get('borrowings', [\App\Http\Controllers\BorrowingController::class, 'index'])->name('borrowings');
     Route::post('borrowings', [\App\Http\Controllers\BorrowingController::class, 'store'])->name('store.borrowings');
 
 });
 
-Route::group(['middleware' => ['role:student', 'auth']], function () {
+Route::group(['middleware' => ['role:student', 'auth'], 'as'=>'student.'], function () {
     Route::get('/student/dashboard', function () {
       return view('students.dashboard');
-    })->name('student.dashboard');
+    })->name('dashboard');
+
+    Route::get('student/borrowings', [\App\Http\Controllers\BorrowingController::class, 'studentIndex'])->name('borrowings');
+     Route::post('student/borrowings', [\App\Http\Controllers\BorrowingController::class, 'storeStudent'])->name('store.borrowings');
+
+     Route::put('update/student/borrowings/{borrowing}', [\App\Http\Controllers\BorrowingController::class, 'update'])->name('update.borrowings');
+
+
 });
 
 require __DIR__.'/auth.php';
